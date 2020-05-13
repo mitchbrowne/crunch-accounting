@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+// styling
 import './styles/index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import Routes from './Routes';
 
 ReactDOM.render(

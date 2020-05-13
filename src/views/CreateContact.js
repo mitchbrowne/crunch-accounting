@@ -1,7 +1,11 @@
 import React from 'react';
 
+import CreateForm from '../components/CreateContact/ContactForm';
+
 export default () => {
   return (
-    <h1>Create Contact Coming Soon</h1>
+    <div>
+      <CreateForm />
+    </div>
   )
 }
