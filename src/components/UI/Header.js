@@ -1,7 +1,11 @@
 import React from 'react';
 
+import logo from '../../assets/images/crunch_accounting.png';
+
 export default () => {
   return (
-    <h1>Header</h1>
+    <div className="header-wrapper">
+      <img src={logo} alt="Crunch Accounting Logo"/>
+    </div>
   )
 }

@@ -56,14 +56,16 @@ export default () => {
 
   return (
     <div>
-      <h1>Create Contact</h1>
-      <div id="controls">
-        <Button onClick={submitForm}>
-          Save
-        </Button>
-        <Button onClick={cancelForm}>
-          Cancel
-        </Button>
+      <div className="content-header">
+        <h1 className="content-title">Create Contact</h1>
+        <div id="controls">
+          <button onClick={cancelForm} className="button button-light">
+            Cancel
+          </button>
+          <button onClick={submitForm} className="button button-dark">
+            Save
+          </button>
+        </div>
       </div>
 
       <ContactInfo
