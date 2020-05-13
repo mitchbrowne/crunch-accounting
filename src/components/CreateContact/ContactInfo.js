@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { parsePhoneNumberFromString } from 'libphonenumber-js'
+import Validator from 'email-validator';
 
 import {
   Container,
@@ -16,6 +17,9 @@ export default (props) => {
   const [phoneValid, setPhoneValid] = useState(true);
   const phoneValidErrorMessage = 'Phone number not valid.'
 
+  const [emailValid, setEmailValid] = useState(true);
+  const emailValidErrorMessage = 'Email not valid.'
+
   const validatePhone = event => {
     setPhoneValid(false);
     const phoneNumber = parsePhoneNumberFromString(event.target.value, 'AU');
@@ -23,6 +27,14 @@ export default (props) => {
       if (phoneNumber.isValid()) {
         setPhoneValid(true);
       }
+    }
+    updateField(event);
+  }
+
+  const validateEmail = event => {
+    setEmailValid(false);
+    if (Validator.validate(event.target.value)) {
+      setEmailValid(true);
     }
     updateField(event);
   }
@@ -135,8 +147,12 @@ export default (props) => {
                 type="email"
                 placeholder="samle@gmail.com"
                 value={formInfo.email}
-                onChange={updateField}
+                onChange={validateEmail}
+                isInvalid={!emailValid}
               />
+              <Form.Control.Feedback type="invalid">
+                {emailValidErrorMessage}
+              </Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group id="emailOptOutCheckbox">
