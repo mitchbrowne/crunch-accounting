@@ -8,6 +8,7 @@ import {
 } from 'react-bootstrap';
 
 export default () => {
+  // set state using object to hold form fields
   const [contactInfo, setState] = useState({
     titlePrefix: '',
     firstName: '',
@@ -20,12 +21,12 @@ export default () => {
     email: ''
   });
 
+  // updates relevant state field upon input change
   const updateField = event => {
     setState({
       ...contactInfo,
       [event.target.id]: event.target.value
     });
-    console.log(contactInfo);
   }
 
   return (

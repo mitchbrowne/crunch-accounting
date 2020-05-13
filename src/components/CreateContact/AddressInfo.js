@@ -8,6 +8,7 @@ import {
 } from 'react-bootstrap';
 
 export default () => {
+  // set state using object to hold form fields
   const [addressInfo, setState] = useState({
     street: '',
     city: '',
@@ -15,6 +16,7 @@ export default () => {
     postcode: ''
   });
 
+  // updates relevant state field upon input change
   const updateField = event => {
     setState({
       ...addressInfo,
