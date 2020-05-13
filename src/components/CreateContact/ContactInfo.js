@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { parsePhoneNumberFromString } from 'libphonenumber-js'
+
 import {
   Container,
   Row,
@@ -10,6 +12,20 @@ import {
 export default (props) => {
   const updateField = props.updateField;
   const formInfo = props.formInfo;
+
+  const [phoneValid, setPhoneValid] = useState(true);
+  const phoneValidErrorMessage = 'Phone number not valid.'
+
+  const validatePhone = event => {
+    setPhoneValid(false);
+    const phoneNumber = parsePhoneNumberFromString(event.target.value, 'AU');
+    if (phoneNumber) {
+      if (phoneNumber.isValid()) {
+        setPhoneValid(true);
+      }
+    }
+    updateField(event);
+  }
 
   return (
     <Container>
@@ -81,11 +97,15 @@ export default (props) => {
               <Form.Label>Phone</Form.Label>
               <Form.Control
                 required
-                type="phone"
+                type="number"
                 placeholder="02 123 456 78"
                 value={formInfo.phone}
-                onChange={updateField}
+                onChange={validatePhone}
+                isInvalid={!phoneValid}
               />
+              <Form.Control.Feedback type="invalid">
+                {phoneValidErrorMessage}
+              </Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group controlId="fax">
