@@ -40,120 +40,128 @@ export default (props) => {
   }
 
   return (
-    <Container>
+    <div className="form-wrapper">
       <Row>
         <Col>
-          <h3>Contact Information</h3>
+          <h3 className="form-title">Contact Information</h3>
         </Col>
       </Row>
       <Row>
         <Col>
           <Form>
-            <Form.Group controlId="titlePrefix">
-              <Form.Control
-                as="select"
-                value={formInfo.titlePrefix}
-                onChange={updateField}
-                >
-                <option>None</option>
-                <option>Mr</option>
-                <option>Mrs</option>
-                <option>Miss</option>
-                <option>Ms</option>
-              </Form.Control>
-            </Form.Group>
-            <Form.Group controlId="firstName">
-              <Form.Label>First Name</Form.Label>
-              <Form.Control
-                required
-                type="text"
-                placeholder="John"
-                value={formInfo.firstName}
-                onChange={updateField}
-              />
-            </Form.Group>
+            <Form.Row>
+                <Form.Group as={Col} controlId="titlePrefix">
+                  <Form.Label>Title Prefix</Form.Label>
+                  <Form.Control
+                    as="select"
+                    value={formInfo.titlePrefix}
+                    onChange={updateField}
+                    >
+                    <option>None</option>
+                    <option>Mr</option>
+                    <option>Mrs</option>
+                    <option>Miss</option>
+                    <option>Ms</option>
+                  </Form.Control>
+                </Form.Group>
+                <Form.Group as={Col} controlId="firstName">
+                  <Form.Label>First Name</Form.Label>
+                  <Form.Control
+                    required
+                    type="text"
+                    placeholder="John"
+                    value={formInfo.firstName}
+                    onChange={updateField}
+                  />
+                </Form.Group>
+                <Form.Group as={Col} controlId="lastName">
+                  <Form.Label>Last Name</Form.Label>
+                  <Form.Control
+                    required
+                    type="text"
+                    placeholder="Smith"
+                    value={formInfo.lastName}
+                    onChange={updateField}
+                  />
+                </Form.Group>
+            </Form.Row>
 
-            <Form.Group controlId="lastName">
-              <Form.Label>Last Name</Form.Label>
-              <Form.Control
-                required
-                type="text"
-                placeholder="Smith"
-                value={formInfo.lastName}
-                onChange={updateField}
-              />
-            </Form.Group>
+            <Form.Row>
+              <Form.Group as={Col} controlId="accountName">
+                <Form.Label>Account Name</Form.Label>
+                <Form.Control
+                  required
+                  type="text"
+                  placeholder="John's Joinery"
+                  value={formInfo.accountName}
+                  onChange={updateField}
+                />
+              </Form.Group>
 
-            <Form.Group controlId="accountName">
-              <Form.Label>Account Name</Form.Label>
-              <Form.Control
-                required
-                type="text"
-                placeholder="John's Joinery"
-                value={formInfo.accountName}
-                onChange={updateField}
-              />
-            </Form.Group>
+              <Form.Group as={Col} controlId="companyName">
+                <Form.Label>Company Name (optional)</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder=""
+                  value={formInfo.companyName}
+                  onChange={updateField}
+                />
+              </Form.Group>
+            </Form.Row>
 
-            <Form.Group controlId="companyName">
-              <Form.Label>Company Name (optional)</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder=""
-                value={formInfo.companyName}
-                onChange={updateField}
-              />
-            </Form.Group>
+            <Form.Row>
+              <Form.Group as={Col} controlId="phone">
+                <Form.Label>Phone</Form.Label>
+                <Form.Control
+                  required
+                  type="number"
+                  placeholder="02 123 456 78"
+                  value={formInfo.phone}
+                  onChange={validatePhone}
+                  isInvalid={!phoneValid}
+                />
+                <Form.Control.Feedback type="invalid">
+                  {phoneValidErrorMessage}
+                </Form.Control.Feedback>
+              </Form.Group>
 
-            <Form.Group controlId="phone">
-              <Form.Label>Phone</Form.Label>
-              <Form.Control
-                required
-                type="number"
-                placeholder="02 123 456 78"
-                value={formInfo.phone}
-                onChange={validatePhone}
-                isInvalid={!phoneValid}
-              />
-              <Form.Control.Feedback type="invalid">
-                {phoneValidErrorMessage}
-              </Form.Control.Feedback>
-            </Form.Group>
+              <Form.Group as={Col} controlId="fax">
+                <Form.Label>Fax (optional)</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="John's Joinery"
+                  value={formInfo.fax}
+                  onChange={updateField}
+                />
+              </Form.Group>
+            </Form.Row>
 
-            <Form.Group controlId="fax">
-              <Form.Label>Fax (optional)</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="John's Joinery"
-                value={formInfo.fax}
-                onChange={updateField}
-              />
-            </Form.Group>
+            <Form.Row>
+              <Form.Group as={Col} controlId="title">
+                <Form.Label>Title (optional)</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Owner"
+                  value={formInfo.title}
+                  onChange={updateField}
+                />
+              </Form.Group>
 
-            <Form.Group controlId="title">
-              <Form.Label>Title (optional)</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Owner"
-                value={formInfo.title}
-                onChange={updateField}
-              />
-            </Form.Group>
-
-            <Form.Group controlId="email">
-              <Form.Label>Email</Form.Label>
-              <Form.Control
-                required
-                type="email"
-                placeholder="samle@gmail.com"
-                value={formInfo.email}
-                onChange={validateEmail}
-                isInvalid={!emailValid}
-              />
-              <Form.Control.Feedback type="invalid">
-                {emailValidErrorMessage}
-              </Form.Control.Feedback>
-            </Form.Group>
+              <Form.Group as={Col} controlId="email">
+                <Form.Label>Email</Form.Label>
+                <Form.Control
+                  required
+                  type="email"
+                  placeholder="samle@gmail.com"
+                  value={formInfo.email}
+                  onChange={validateEmail}
+                  isInvalid={!emailValid}
+                />
+                <Form.Control.Feedback type="invalid">
+                  {emailValidErrorMessage}
+                </Form.Control.Feedback>
+              </Form.Group>
+            </Form.Row>
 
             <Form.Group id="emailOptOutCheckbox">
               <Form.Check
@@ -163,9 +171,11 @@ export default (props) => {
                 onChange={updateField}
               />
             </Form.Group>
+
+
           </Form>
         </Col>
       </Row>
-    </Container>
+    </div>
   )
 }

@@ -56,30 +56,34 @@ export default () => {
 
   return (
     <div>
-      <h1>Create Contact</h1>
-      <div id="controls">
-        <Button onClick={submitForm}>
-          Save
-        </Button>
-        <Button onClick={cancelForm}>
-          Cancel
-        </Button>
+      <div className="contact-header">
+        <h1 className="contact-title">Create Contact</h1>
+        <div id="controls">
+          <button onClick={cancelForm} className="button button-light">
+            Cancel
+          </button>
+          <button onClick={submitForm} className="button button-dark">
+            Save
+          </button>
+        </div>
       </div>
 
-      <ContactInfo
-        updateField={updateField}
-        formInfo={formInfo}
-      />
+      <div className="contact-content">
+        <ContactInfo
+          updateField={updateField}
+          formInfo={formInfo}
+        />
 
-      <AddressInfo
-        updateField={updateField}
-        formInfo={formInfo}
-      />
+        <AddressInfo
+          updateField={updateField}
+          formInfo={formInfo}
+        />
 
-      <DescriptionInfo
-        updateField={updateField}
-        formInfo={formInfo}
-      />
+        <DescriptionInfo
+          updateField={updateField}
+          formInfo={formInfo}
+        />
+      </div>
     </div>
   )
 }

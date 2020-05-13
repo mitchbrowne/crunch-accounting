@@ -25,70 +25,74 @@ export default (props) => {
   }
 
   return (
-    <Container>
+    <div className="form-wrapper">
       <Row>
         <Col>
-          <h3>Address Information</h3>
+          <h3 className="form-title">Address Information</h3>
         </Col>
       </Row>
       <Row>
         <Col>
           <Form>
-            <Form.Group controlId="street">
-              <Form.Label>Street No. & Street</Form.Label>
-              <Form.Control
-                required
-                type="text"
-                placeholder="1 Elizabeth Street"
-                value={formInfo.street}
-                onChange={updateField}
-              />
-            </Form.Group>
+            <Form.Row>
+              <Form.Group as={Col} controlId="street">
+                <Form.Label>Street No. & Street</Form.Label>
+                <Form.Control
+                  required
+                  type="text"
+                  placeholder="1 Elizabeth Street"
+                  value={formInfo.street}
+                  onChange={updateField}
+                />
+              </Form.Group>
 
-            <Form.Group controlId="city">
-              <Form.Label>City</Form.Label>
-              <Form.Control
-                required
-                type="text"
-                placeholder="Sydney"
-                value={formInfo.city}
-                onChange={updateField}
-              />
-            </Form.Group>
+              <Form.Group as={Col} controlId="city">
+                <Form.Label>City</Form.Label>
+                <Form.Control
+                  required
+                  type="text"
+                  placeholder="Sydney"
+                  value={formInfo.city}
+                  onChange={updateField}
+                />
+              </Form.Group>
+            </Form.Row>
 
-            <Form.Group controlId="state">
-              <Form.Label>State</Form.Label>
-              <Form.Control
-                as="select"
-                value={formInfo.state}
-                onChange={updateField}
-              >
-                <option>New South Wales</option>
-                <option>Victoria</option>
-                <option>Queensland</option>
-                <option>Western Australia</option>
-                <option>South Australia</option>
-                <option>Tasmania</option>
-              </Form.Control>
-            </Form.Group>
+            <Form.Row>
+              <Form.Group as={Col} controlId="state">
+                <Form.Label>State</Form.Label>
+                <Form.Control
+                  as="select"
+                  value={formInfo.state}
+                  onChange={updateField}
+                >
+                  <option>New South Wales</option>
+                  <option>Victoria</option>
+                  <option>Queensland</option>
+                  <option>Western Australia</option>
+                  <option>South Australia</option>
+                  <option>Tasmania</option>
+                </Form.Control>
+              </Form.Group>
 
-            <Form.Group controlId="postcode">
-              <Form.Label>Postcode</Form.Label>
-              <Form.Control
-                required
-                type="postcode"
-                placeholder="2000"
-                value={formInfo.postcode}
-                onChange={validatePostcode}
-                isInvalid={!postcodeValid}
-              />
-              <Form.Control.Feedback type="invalid">
-                {postcodeValidErrorMessage}
-              </Form.Control.Feedback>
-            </Form.Group>
+              <Form.Group as={Col} controlId="postcode">
+                <Form.Label>Postcode</Form.Label>
+                <Form.Control
+                  required
+                  type="postcode"
+                  placeholder="2000"
+                  value={formInfo.postcode}
+                  onChange={validatePostcode}
+                  isInvalid={!postcodeValid}
+                />
+                <Form.Control.Feedback type="invalid">
+                  {postcodeValidErrorMessage}
+                </Form.Control.Feedback>
+              </Form.Group>
+            </Form.Row>
           </Form>
         </Col>
       </Row>
-    </Container>
+    </div>
   )
 }

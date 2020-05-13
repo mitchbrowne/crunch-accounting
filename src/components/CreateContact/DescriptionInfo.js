@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import {
   Container,
@@ -9,10 +9,10 @@ import {
 
 export default (props) => {
   return (
-    <Container>
+    <div className="form-wrapper">
       <Row>
         <Col>
-          <h3>Description Information</h3>
+          <h3 className="form-title">Description Information</h3>
         </Col>
       </Row>
       <Row>
@@ -28,6 +28,6 @@ export default (props) => {
           </Form.Group>
         </Col>
       </Row>
-    </Container>
+    </div>
   )
 }

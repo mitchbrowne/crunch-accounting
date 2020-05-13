@@ -1,13 +1,87 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Montserrat', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.header-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-wrapper {
+  background-color: #F8F8F8;
+}
+
+.contact-header {
+  box-sizing: border-box;
+  padding: 1em 2em 0.7em 2em;
+  background-color: #21008C;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.contact-title {
+  font-size: 1.5em;
+  font-weight: 400;
+  color: #fff;
+}
+
+.button {
+  margin: 0 0.5em;
+  padding: 0.2em 1em;
+  border: none;
+  border-radius: 2px;
+}
+
+.button-light {
+  background-color: #fff;
+  color: #FF6C00;
+}
+
+.button-dark {
+  background-color: #FF6C00;
+  color: #fff;
+}
+
+.contact-content {
+  max-width: 50vw;
+}
+
+.form-wrapper {
+  margin: 2em 2em;
+}
+
+.form-title {
+  font-size: 1.3em;
+  color: #FF6C00;
+  margin-bottom: 1em;
+}
+
+.footer-wrapper {
+  padding: 0 5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+footer p {
+  color: #BFBFC6;
+  font-size: 12px;
+}
+
+.footer-link {
+  text-decoration: none;
+  color: #BFBFC6;
+  margin: 0 1em;
+  font-size: 12px;
+}
+
+.footer-link:hover {
+  text-decoration: none;
+  color: #AAAAAA;
 }
