@@ -8,6 +8,9 @@ import {
 } from 'react-bootstrap';
 
 export default (props) => {
+  const updateField = props.updateField;
+  const formInfo = props.formInfo;
+
   return (
     <Container>
       <Row>
@@ -21,7 +24,8 @@ export default (props) => {
             <Form.Group controlId="titlePrefix">
               <Form.Control
                 as="select"
-                onChange={props.updateField}
+                value={formInfo.titlePrefix}
+                onChange={updateField}
                 >
                 <option>None</option>
                 <option>Mr</option>
@@ -36,7 +40,8 @@ export default (props) => {
                 required
                 type="text"
                 placeholder="John"
-                onChange={props.updateField}
+                value={formInfo.firstName}
+                onChange={updateField}
               />
             </Form.Group>
 
@@ -46,7 +51,8 @@ export default (props) => {
                 required
                 type="text"
                 placeholder="Smith"
-                onChange={props.updateField}
+                value={formInfo.lastName}
+                onChange={updateField}
               />
             </Form.Group>
 
@@ -56,7 +62,8 @@ export default (props) => {
                 required
                 type="text"
                 placeholder="John's Joinery"
-                onChange={props.updateField}
+                value={formInfo.accountName}
+                onChange={updateField}
               />
             </Form.Group>
 
@@ -65,7 +72,8 @@ export default (props) => {
               <Form.Control
                 type="text"
                 placeholder=""
-                onChange={props.updateField}
+                value={formInfo.companyName}
+                onChange={updateField}
               />
             </Form.Group>
 
@@ -75,7 +83,8 @@ export default (props) => {
                 required
                 type="phone"
                 placeholder="02 123 456 78"
-                onChange={props.updateField}
+                value={formInfo.phone}
+                onChange={updateField}
               />
             </Form.Group>
 
@@ -84,7 +93,8 @@ export default (props) => {
               <Form.Control
                 type="text"
                 placeholder="John's Joinery"
-                onChange={props.updateField}
+                value={formInfo.fax}
+                onChange={updateField}
               />
             </Form.Group>
 
@@ -93,7 +103,8 @@ export default (props) => {
               <Form.Control
                 type="text"
                 placeholder="Owner"
-                onChange={props.updateField}
+                value={formInfo.title}
+                onChange={updateField}
               />
             </Form.Group>
 
@@ -103,7 +114,8 @@ export default (props) => {
                 required
                 type="email"
                 placeholder="samle@gmail.com"
-                onChange={props.updateField}
+                value={formInfo.email}
+                onChange={updateField}
               />
             </Form.Group>
 
@@ -111,7 +123,8 @@ export default (props) => {
               <Form.Check
                 type="checkbox"
                 label="Email Opt Out"
-                onChange={props.updateField}
+                value={formInfo.emailOptOutCheckbox}
+                onChange={updateField}
               />
             </Form.Group>
           </Form>

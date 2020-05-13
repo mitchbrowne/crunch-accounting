@@ -10,14 +10,8 @@ import AddressInfo from './AddressInfo';
 import DescriptionInfo from './DescriptionInfo';
 
 export default () => {
-  // set state of each form section using object to hold form fields
-  // const [formInfo, setState] = useState({
-  //   contactInfo: {},
-  //   addressInfo: {},
-  //   descriptionInfo: {}
-  // });
-
-  const [formInfo, setState] = useState({
+  // hold initial field states within object
+  const initialFormInfoState = {
     titlePrefix: '',
     firstName: '',
     lastName: '',
@@ -27,12 +21,18 @@ export default () => {
     fax: '',
     title: '',
     email: '',
+    emailOptOutCheckbox: '',
     street: '',
     city: '',
     state: '',
     postcode: '',
     description: ''
-  });
+  }
+
+  // set state of each form field using state object to hold fields
+  const [formInfo, setState] = useState(
+    initialFormInfoState
+  );
 
   // updates relevant form section state upon input change from child
   const updateField = event => {
@@ -42,8 +42,16 @@ export default () => {
     });
   }
 
+  // perform code when form is submitted by user
   const submitForm = () => {
     console.log(formInfo);
+  }
+
+  // reset the form when cancelled by user
+  const cancelForm = () => {
+    setState(
+      initialFormInfoState
+    );
   }
 
   return (
@@ -53,13 +61,25 @@ export default () => {
         <Button onClick={submitForm}>
           Save
         </Button>
-        <Button>
+        <Button onClick={cancelForm}>
           Cancel
         </Button>
       </div>
-      <ContactInfo updateField={updateField}/>
-      <AddressInfo updateField={updateField}/>
-      <DescriptionInfo updateField={updateField}/>
+
+      <ContactInfo
+        updateField={updateField}
+        formInfo={formInfo}
+      />
+
+      <AddressInfo
+        updateField={updateField}
+        formInfo={formInfo}
+      />
+
+      <DescriptionInfo
+        updateField={updateField}
+        formInfo={formInfo}
+      />
     </div>
   )
 }

@@ -22,6 +22,7 @@ export default (props) => {
             <Form.Control
               required
               type="text"
+              value={props.formInfo.description}
               onChange={props.updateField}
             />
           </Form.Group>

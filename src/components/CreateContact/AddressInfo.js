@@ -8,6 +8,9 @@ import {
 } from 'react-bootstrap';
 
 export default (props) => {
+  const updateField = props.updateField;
+  const formInfo = props.formInfo;
+
   return (
     <Container>
       <Row>
@@ -24,7 +27,8 @@ export default (props) => {
                 required
                 type="text"
                 placeholder="1 Elizabeth Street"
-                onChange={props.updateField}
+                value={formInfo.street}
+                onChange={updateField}
               />
             </Form.Group>
 
@@ -34,7 +38,8 @@ export default (props) => {
                 required
                 type="text"
                 placeholder="Sydney"
-                onChange={props.updateField}
+                value={formInfo.city}
+                onChange={updateField}
               />
             </Form.Group>
 
@@ -42,7 +47,8 @@ export default (props) => {
               <Form.Label>State</Form.Label>
               <Form.Control
                 as="select"
-                onChange={props.updateField}
+                value={formInfo.state}
+                onChange={updateField}
               >
                 <option>New South Wales</option>
                 <option>Victoria</option>
@@ -59,7 +65,8 @@ export default (props) => {
                 required
                 type="postcode"
                 placeholder="2000"
-                onChange={props.updateField}
+                value={formInfo.postcode}
+                onChange={updateField}
               />
             </Form.Group>
           </Form>
