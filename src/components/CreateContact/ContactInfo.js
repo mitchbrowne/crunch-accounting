@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 
+import { parsePhoneNumberFromString } from 'libphonenumber-js';
+import Validator from 'email-validator';
+
 import {
   Container,
   Row,
@@ -7,26 +10,33 @@ import {
   Form
 } from 'react-bootstrap';
 
-export default () => {
-  // set state using object to hold form fields
-  const [contactInfo, setState] = useState({
-    titlePrefix: '',
-    firstName: '',
-    lastName: '',
-    accountName: '',
-    companyName: '',
-    phone: '',
-    fax: '',
-    title: '',
-    email: ''
-  });
+export default (props) => {
+  const updateField = props.updateField;
+  const formInfo = props.formInfo;
 
-  // updates relevant state field upon input change
-  const updateField = event => {
-    setState({
-      ...contactInfo,
-      [event.target.id]: event.target.value
-    });
+  const [phoneValid, setPhoneValid] = useState(true);
+  const phoneValidErrorMessage = 'Phone number not valid.'
+
+  const [emailValid, setEmailValid] = useState(true);
+  const emailValidErrorMessage = 'Email not valid.'
+
+  const validatePhone = event => {
+    setPhoneValid(false);
+    const phoneNumber = parsePhoneNumberFromString(event.target.value, 'AU');
+    if (phoneNumber) {
+      if (phoneNumber.isValid()) {
+        setPhoneValid(true);
+      }
+    }
+    updateField(event);
+  }
+
+  const validateEmail = event => {
+    setEmailValid(false);
+    if (Validator.validate(event.target.value)) {
+      setEmailValid(true);
+    }
+    updateField(event);
   }
 
   return (
@@ -42,6 +52,7 @@ export default () => {
             <Form.Group controlId="titlePrefix">
               <Form.Control
                 as="select"
+                value={formInfo.titlePrefix}
                 onChange={updateField}
                 >
                 <option>None</option>
@@ -57,6 +68,7 @@ export default () => {
                 required
                 type="text"
                 placeholder="John"
+                value={formInfo.firstName}
                 onChange={updateField}
               />
             </Form.Group>
@@ -67,6 +79,7 @@ export default () => {
                 required
                 type="text"
                 placeholder="Smith"
+                value={formInfo.lastName}
                 onChange={updateField}
               />
             </Form.Group>
@@ -77,6 +90,7 @@ export default () => {
                 required
                 type="text"
                 placeholder="John's Joinery"
+                value={formInfo.accountName}
                 onChange={updateField}
               />
             </Form.Group>
@@ -86,6 +100,7 @@ export default () => {
               <Form.Control
                 type="text"
                 placeholder=""
+                value={formInfo.companyName}
                 onChange={updateField}
               />
             </Form.Group>
@@ -94,10 +109,15 @@ export default () => {
               <Form.Label>Phone</Form.Label>
               <Form.Control
                 required
-                type="phone"
+                type="number"
                 placeholder="02 123 456 78"
-                onChange={updateField}
+                value={formInfo.phone}
+                onChange={validatePhone}
+                isInvalid={!phoneValid}
               />
+              <Form.Control.Feedback type="invalid">
+                {phoneValidErrorMessage}
+              </Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group controlId="fax">
@@ -105,6 +125,7 @@ export default () => {
               <Form.Control
                 type="text"
                 placeholder="John's Joinery"
+                value={formInfo.fax}
                 onChange={updateField}
               />
             </Form.Group>
@@ -114,6 +135,7 @@ export default () => {
               <Form.Control
                 type="text"
                 placeholder="Owner"
+                value={formInfo.title}
                 onChange={updateField}
               />
             </Form.Group>
@@ -124,14 +146,20 @@ export default () => {
                 required
                 type="email"
                 placeholder="samle@gmail.com"
-                onChange={updateField}
+                value={formInfo.email}
+                onChange={validateEmail}
+                isInvalid={!emailValid}
               />
+              <Form.Control.Feedback type="invalid">
+                {emailValidErrorMessage}
+              </Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group id="emailOptOutCheckbox">
               <Form.Check
                 type="checkbox"
                 label="Email Opt Out"
+                value={formInfo.emailOptOutCheckbox}
                 onChange={updateField}
               />
             </Form.Group>

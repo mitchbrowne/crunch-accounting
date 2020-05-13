@@ -7,20 +7,7 @@ import {
   Form
 } from 'react-bootstrap';
 
-export default () => {
-  // set state using object to hold form fields
-  const [descriptionInfo, setState] = useState({
-    description: ''
-  });
-
-  // updates relevant state field upon input change
-  const updateField = event => {
-    setState({
-      ...descriptionInfo,
-      [event.target.id]: event.target.value
-    });
-  }
-
+export default (props) => {
   return (
     <Container>
       <Row>
@@ -35,7 +22,8 @@ export default () => {
             <Form.Control
               required
               type="text"
-              onChange={updateField}
+              value={props.formInfo.description}
+              onChange={props.updateField}
             />
           </Form.Group>
         </Col>

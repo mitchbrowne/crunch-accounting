@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { postcodeValidator } from 'postcode-validator';
+
 import {
   Container,
   Row,
@@ -7,21 +9,19 @@ import {
   Form
 } from 'react-bootstrap';
 
-export default () => {
-  // set state using object to hold form fields
-  const [addressInfo, setState] = useState({
-    street: '',
-    city: '',
-    state: '',
-    postcode: ''
-  });
+export default (props) => {
+  const updateField = props.updateField;
+  const formInfo = props.formInfo;
 
-  // updates relevant state field upon input change
-  const updateField = event => {
-    setState({
-      ...addressInfo,
-      [event.target.id]: event.target.value
-    });
+  const [postcodeValid, setPostcodeValid] = useState(true);
+  const postcodeValidErrorMessage = 'Postcode not valid.'
+
+  const validatePostcode = event => {
+    setPostcodeValid(false);
+    if (postcodeValidator(event.target.value, 'AU')) {
+      setPostcodeValid(true);
+    }
+    updateField(event);
   }
 
   return (
@@ -40,6 +40,7 @@ export default () => {
                 required
                 type="text"
                 placeholder="1 Elizabeth Street"
+                value={formInfo.street}
                 onChange={updateField}
               />
             </Form.Group>
@@ -50,6 +51,7 @@ export default () => {
                 required
                 type="text"
                 placeholder="Sydney"
+                value={formInfo.city}
                 onChange={updateField}
               />
             </Form.Group>
@@ -58,6 +60,7 @@ export default () => {
               <Form.Label>State</Form.Label>
               <Form.Control
                 as="select"
+                value={formInfo.state}
                 onChange={updateField}
               >
                 <option>New South Wales</option>
@@ -75,8 +78,13 @@ export default () => {
                 required
                 type="postcode"
                 placeholder="2000"
-                onChange={updateField}
+                value={formInfo.postcode}
+                onChange={validatePostcode}
+                isInvalid={!postcodeValid}
               />
+              <Form.Control.Feedback type="invalid">
+                {postcodeValidErrorMessage}
+              </Form.Control.Feedback>
             </Form.Group>
           </Form>
         </Col>
