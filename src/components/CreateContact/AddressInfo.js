@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { postcodeValidator } from 'postcode-validator';
+
 import {
   Container,
   Row,
@@ -10,6 +12,17 @@ import {
 export default (props) => {
   const updateField = props.updateField;
   const formInfo = props.formInfo;
+
+  const [postcodeValid, setPostcodeValid] = useState(true);
+  const postcodeValidErrorMessage = 'Postcode not valid.'
+
+  const validatePostcode = event => {
+    setPostcodeValid(false);
+    if (postcodeValidator(event.target.value, 'AU')) {
+      setPostcodeValid(true);
+    }
+    updateField(event);
+  }
 
   return (
     <Container>
@@ -66,8 +79,12 @@ export default (props) => {
                 type="postcode"
                 placeholder="2000"
                 value={formInfo.postcode}
-                onChange={updateField}
+                onChange={validatePostcode}
+                isInvalid={!postcodeValid}
               />
+              <Form.Control.Feedback type="invalid">
+                {postcodeValidErrorMessage}
+              </Form.Control.Feedback>
             </Form.Group>
           </Form>
         </Col>

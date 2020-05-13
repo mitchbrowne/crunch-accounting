@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { parsePhoneNumberFromString } from 'libphonenumber-js'
+import { parsePhoneNumberFromString } from 'libphonenumber-js';
 import Validator from 'email-validator';
 
 import {
