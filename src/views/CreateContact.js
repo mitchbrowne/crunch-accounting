@@ -1,11 +1,11 @@
 import React from 'react';
 
-import CreateForm from '../components/CreateContact/ContactForm';
+import ContactForm from '../components/CreateContact/ContactForm';
 
 export default () => {
   return (
     <div>
-      <CreateForm />
+      <ContactForm />
     </div>
   )
 }

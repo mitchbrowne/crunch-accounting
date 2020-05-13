@@ -20,7 +20,6 @@ export default () => {
       ...addressInfo,
       [event.target.id]: event.target.value
     });
-    console.log(addressInfo);
   }
 
   return (
