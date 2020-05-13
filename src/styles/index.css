@@ -5,10 +5,6 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-.layout-wrapper {
-  /* min-width: 97vw; */
-}
-
 .header-wrapper {
   display: flex;
   flex-direction: column;
@@ -16,7 +12,7 @@
   align-items: center;
 }
 
-.content-header {
+.contact-header {
   box-sizing: border-box;
   padding: 1em 2em 0.7em 2em;
   background-color: #21008C;
@@ -26,7 +22,7 @@
   align-items: center;
 }
 
-.content-title {
+.contact-title {
   font-size: 1.5em;
   font-weight: 400;
   color: #fff;
@@ -48,4 +44,18 @@
 .button-dark {
   background-color: #FF6C00;
   color: #fff;
+}
+
+.contact-content {
+  max-width: 60vw;
+}
+
+.form-wrapper {
+  margin: 2em 2em;
+}
+
+.form-title {
+  font-size: 1.3em;
+  color: #FF6C00;
+  margin-bottom: 2em;
 }

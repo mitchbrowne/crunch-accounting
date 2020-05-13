@@ -56,8 +56,8 @@ export default () => {
 
   return (
     <div>
-      <div className="content-header">
-        <h1 className="content-title">Create Contact</h1>
+      <div className="contact-header">
+        <h1 className="contact-title">Create Contact</h1>
         <div id="controls">
           <button onClick={cancelForm} className="button button-light">
             Cancel
@@ -68,20 +68,22 @@ export default () => {
         </div>
       </div>
 
-      <ContactInfo
-        updateField={updateField}
-        formInfo={formInfo}
-      />
+      <div className="contact-content">
+        <ContactInfo
+          updateField={updateField}
+          formInfo={formInfo}
+        />
 
-      <AddressInfo
-        updateField={updateField}
-        formInfo={formInfo}
-      />
+        <AddressInfo
+          updateField={updateField}
+          formInfo={formInfo}
+        />
 
-      <DescriptionInfo
-        updateField={updateField}
-        formInfo={formInfo}
-      />
+        <DescriptionInfo
+          updateField={updateField}
+          formInfo={formInfo}
+        />
+      </div>
     </div>
   )
 }
