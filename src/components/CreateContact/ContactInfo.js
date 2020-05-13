@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
   Container,
@@ -8,6 +8,27 @@ import {
 } from 'react-bootstrap';
 
 export default () => {
+  // set state using object to hold form fields
+  const [contactInfo, setState] = useState({
+    titlePrefix: '',
+    firstName: '',
+    lastName: '',
+    accountName: '',
+    companyName: '',
+    phone: '',
+    fax: '',
+    title: '',
+    email: ''
+  });
+
+  // updates relevant state field upon input change
+  const updateField = event => {
+    setState({
+      ...contactInfo,
+      [event.target.id]: event.target.value
+    });
+  }
+
   return (
     <Container>
       <Row>
@@ -18,19 +39,25 @@ export default () => {
       <Row>
         <Col>
           <Form>
-            <Form.Group controlId="firstName">
-              <Form.Label>First Name</Form.Label>
-              <Form.Control as="select">
+            <Form.Group controlId="titlePrefix">
+              <Form.Control
+                as="select"
+                onChange={updateField}
+                >
                 <option>None</option>
                 <option>Mr</option>
                 <option>Mrs</option>
                 <option>Miss</option>
                 <option>Ms</option>
               </Form.Control>
+            </Form.Group>
+            <Form.Group controlId="firstName">
+              <Form.Label>First Name</Form.Label>
               <Form.Control
                 required
                 type="text"
                 placeholder="John"
+                onChange={updateField}
               />
             </Form.Group>
 
@@ -40,6 +67,7 @@ export default () => {
                 required
                 type="text"
                 placeholder="Smith"
+                onChange={updateField}
               />
             </Form.Group>
 
@@ -49,6 +77,7 @@ export default () => {
                 required
                 type="text"
                 placeholder="John's Joinery"
+                onChange={updateField}
               />
             </Form.Group>
 
@@ -57,6 +86,7 @@ export default () => {
               <Form.Control
                 type="text"
                 placeholder=""
+                onChange={updateField}
               />
             </Form.Group>
 
@@ -66,6 +96,7 @@ export default () => {
                 required
                 type="phone"
                 placeholder="02 123 456 78"
+                onChange={updateField}
               />
             </Form.Group>
 
@@ -74,6 +105,7 @@ export default () => {
               <Form.Control
                 type="text"
                 placeholder="John's Joinery"
+                onChange={updateField}
               />
             </Form.Group>
 
@@ -82,6 +114,7 @@ export default () => {
               <Form.Control
                 type="text"
                 placeholder="Owner"
+                onChange={updateField}
               />
             </Form.Group>
 
@@ -91,6 +124,7 @@ export default () => {
                 required
                 type="email"
                 placeholder="samle@gmail.com"
+                onChange={updateField}
               />
             </Form.Group>
 
@@ -98,6 +132,7 @@ export default () => {
               <Form.Check
                 type="checkbox"
                 label="Email Opt Out"
+                onChange={updateField}
               />
             </Form.Group>
           </Form>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
   Container,
@@ -8,6 +8,22 @@ import {
 } from 'react-bootstrap';
 
 export default () => {
+  // set state using object to hold form fields
+  const [addressInfo, setState] = useState({
+    street: '',
+    city: '',
+    state: '',
+    postcode: ''
+  });
+
+  // updates relevant state field upon input change
+  const updateField = event => {
+    setState({
+      ...addressInfo,
+      [event.target.id]: event.target.value
+    });
+  }
+
   return (
     <Container>
       <Row>
@@ -24,6 +40,7 @@ export default () => {
                 required
                 type="text"
                 placeholder="1 Elizabeth Street"
+                onChange={updateField}
               />
             </Form.Group>
 
@@ -33,12 +50,16 @@ export default () => {
                 required
                 type="text"
                 placeholder="Sydney"
+                onChange={updateField}
               />
             </Form.Group>
 
             <Form.Group controlId="state">
               <Form.Label>State</Form.Label>
-              <Form.Control as="select">
+              <Form.Control
+                as="select"
+                onChange={updateField}
+              >
                 <option>New South Wales</option>
                 <option>Victoria</option>
                 <option>Queensland</option>
@@ -54,6 +75,7 @@ export default () => {
                 required
                 type="postcode"
                 placeholder="2000"
+                onChange={updateField}
               />
             </Form.Group>
           </Form>
