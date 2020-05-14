@@ -114,7 +114,7 @@ export default (props) => {
                 <Form.Label>Phone</Form.Label>
                 <Form.Control
                   required
-                  type="number"
+                  type="phone"
                   placeholder="02 123 456 78"
                   value={formInfo.phone}
                   onChange={validatePhone}

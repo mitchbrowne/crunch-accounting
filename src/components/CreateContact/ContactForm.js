@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { validateForm } from '../../helpers/Validation';
+
 import {
   Button
 } from 'react-bootstrap';
@@ -29,9 +31,28 @@ export default () => {
     description: ''
   }
 
+  const initialFormValidState = {
+    titlePrefix: false,
+    firstName: false,
+    lastName: false,
+    accountName: false,
+    phone: false,
+    email: false,
+    emailOptOutCheckbox: false,
+    street: false,
+    city: false,
+    state: false,
+    postcode: false,
+    description: false
+  }
+
   // set state of each form field using state object to hold fields
   const [formInfo, setState] = useState(
     initialFormInfoState
+  );
+
+  const [formValid, setValidState] = useState(
+    initialFormValidState
   );
 
   // updates relevant form section state upon input change from child
@@ -45,6 +66,7 @@ export default () => {
   // perform code when form is submitted by user
   const submitForm = () => {
     console.log(formInfo);
+    validateForm(formInfo);
   }
 
   // reset the form when cancelled by user
@@ -62,7 +84,7 @@ export default () => {
           <button onClick={cancelForm} className="button button-light">
             Cancel
           </button>
-          <button onClick={submitForm} className="button button-dark">
+          <button type="submit" form="mainForm" onClick={submitForm} className="button button-dark">
             Save
           </button>
         </div>
