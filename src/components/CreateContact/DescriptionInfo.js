@@ -1,5 +1,6 @@
 import React from 'react';
 
+// import bootstrap styling
 import {
   Container,
   Row,
@@ -8,7 +9,8 @@ import {
 } from 'react-bootstrap';
 
 export default (props) => {
-  const {updateField, formInfo} = props;
+  // destructure props
+  const { updateField, formInfo } = props;
 
   return (
     <Container className="form-wrapper">
@@ -17,6 +19,7 @@ export default (props) => {
           <h3 className="form-title">Description Information</h3>
         </Col>
       </Row>
+      
       <Row>
         <Col>
           <Form.Group controlId="description">

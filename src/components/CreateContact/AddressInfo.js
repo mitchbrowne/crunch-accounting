@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import { postcodeValidator } from 'postcode-validator';
-
+// import bootstrap styling
 import {
   Container,
   Row,
@@ -10,7 +9,13 @@ import {
 } from 'react-bootstrap';
 
 export default (props) => {
-  const {updateField, formInfo, validatePostcode, postcodeValid} = props;
+  //destructure props
+  const {
+    updateField,
+    formInfo,
+    validatePostcode,
+    postcodeValid
+  } = props;
 
   return (
     <Container className="form-wrapper">

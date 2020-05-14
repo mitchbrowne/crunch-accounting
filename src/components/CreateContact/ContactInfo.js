@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import { parsePhoneNumberFromString } from 'libphonenumber-js';
-import Validator from 'email-validator';
-
+// import bootstrap styling
 import {
   Container,
   Row,
@@ -11,6 +9,7 @@ import {
 } from 'react-bootstrap';
 
 export default (props) => {
+  // destructure props
   const {
     formInfo,
     updateField,
@@ -21,7 +20,6 @@ export default (props) => {
     emailValid
   } = props;
 
-
   return (
     <Container className="form-wrapper">
       <Row>
@@ -29,6 +27,7 @@ export default (props) => {
           <h3 className="form-title">Contact Information</h3>
         </Col>
       </Row>
+
       <Row>
         <Col>
           <Form.Row>
@@ -38,7 +37,7 @@ export default (props) => {
                   as="select"
                   value={formInfo.titlePrefix}
                   onChange={updateField}
-                  >
+                >
                   <option>None</option>
                   <option>Mr</option>
                   <option>Mrs</option>
@@ -156,8 +155,8 @@ export default (props) => {
               />
             </Form.Group>
           </Form.Row>
-      </Col>
-    </Row>
-  </Container>
+        </Col>
+      </Row>
+    </Container>
   )
 }

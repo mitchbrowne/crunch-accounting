@@ -1,5 +1,6 @@
 import React from 'react';
 
+// import crunch accounting logo
 import logo from '../../assets/images/crunch_accounting.png';
 
 export default () => {

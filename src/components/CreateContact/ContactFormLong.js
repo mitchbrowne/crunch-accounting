@@ -1,21 +1,19 @@
 import React, { useState } from 'react';
 
+// import validator libraries
 import { parsePhoneNumberFromString } from 'libphonenumber-js';
 import Validator from 'email-validator';
 import { postcodeValidator } from 'postcode-validator';
 
+// import components
 import ContactInfo from './ContactInfo';
 import AddressInfo from './AddressInfo';
 import DescriptionInfo from './DescriptionInfo';
 import ConfirmationModal from './Modal/ConfirmationModal';
 
+// import bootstrap styling
 import {
-  Container,
-  Button,
-  Row,
-  Col,
-  Form,
-  InputGroup
+  Form
 } from 'react-bootstrap';
 
 export default () => {
@@ -61,6 +59,16 @@ export default () => {
     initialFormInfoState
   );
 
+  // set state for the modal show
+  const [modalShow, setModalShow] = useState(false);
+
+  // set state for each validation
+  const [validated, setValidated] = useState(false);
+  const [phoneValid, setPhoneValid] = useState(true);
+  const [emailValid, setEmailValid] = useState(true);
+  const [postcodeValid, setPostcodeValid] = useState(true);
+
+
   // updates relevant form section state upon input change from child
   const updateField = event => {
     setState({
@@ -80,10 +88,6 @@ export default () => {
   // submit form when form is submitted by user
   const submitForm = event => {
     const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
     if (
       form.checkValidity() === true &&
       phoneValid &&
@@ -92,6 +96,9 @@ export default () => {
     ) {
       event.preventDefault();
       setModalShow(true);
+    } else {
+      event.preventDefault();
+      event.stopPropagation();
     }
     setValidated(true);
   }
@@ -104,16 +111,7 @@ export default () => {
     setValidated(false);
   }
 
-  const [validated, setValidated] = useState(false);
-
-  const [phoneValid, setPhoneValid] = useState(true);
-  const phoneValidErrorMessage = 'Phone number not valid.'
-
-  const [emailValid, setEmailValid] = useState(true);
-  const emailValidErrorMessage = 'Email not valid.'
-
-
-
+  // validate phone number, using libphonenumber-js library
   const validatePhone = event => {
     setPhoneValid(false);
     const phoneNumber = parsePhoneNumberFromString(event.target.value, 'AU');
@@ -125,6 +123,7 @@ export default () => {
     updateField(event);
   }
 
+  // validate email, using email-validator library
   const validateEmail = event => {
     setEmailValid(false);
     if (Validator.validate(event.target.value)) {
@@ -133,9 +132,7 @@ export default () => {
     updateField(event);
   }
 
-  const [postcodeValid, setPostcodeValid] = useState(true);
-  const postcodeValidErrorMessage = 'Postcode not valid.'
-
+  // validate postcode, using postcode-validator library
   const validatePostcode = event => {
     setPostcodeValid(false);
     if (postcodeValidator(event.target.value, 'AU')) {
@@ -144,13 +141,11 @@ export default () => {
     updateField(event);
   }
 
-  const [modalShow, setModalShow] = useState(false);
-
   return (
     <div>
       <ConfirmationModal
         show={modalShow}
-        formInfo={formInfo}
+        forminfo={formInfo}
         onHide={() => setModalShow(false)}
       />
 
