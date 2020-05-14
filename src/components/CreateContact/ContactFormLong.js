@@ -6,9 +6,9 @@ import Validator from 'email-validator';
 import { postcodeValidator } from 'postcode-validator';
 
 // import components
-import ContactInfo from './ContactInfo';
-import AddressInfo from './AddressInfo';
-import DescriptionInfo from './DescriptionInfo';
+import ContactInfo from './FormSections/ContactInfo';
+import AddressInfo from './FormSections/AddressInfo';
+import DescriptionInfo from './FormSections/DescriptionInfo';
 import ConfirmationModal from './Modal/ConfirmationModal';
 
 // import bootstrap styling
