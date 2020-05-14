@@ -60,7 +60,7 @@ export default (props) => {
             />
             <ModalRow
               labelOne='Email Opt Out'
-              valueOne={formInfo.emailOptOutCheckbox}
+              valueOne={formInfo.emailOptOutCheckbox ? 'Yes' : 'No'}
               labelTwo=''
               valueTwo=''
             />

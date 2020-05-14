@@ -27,10 +27,10 @@ export default () => {
   //   fax: '',
   //   title: '',
   //   email: '',
-  //   emailOptOutCheckbox: '',
+  //   emailOptOutCheckbox: false,
   //   street: '',
   //   city: '',
-  //   state: '',
+  //   state: 'New South Wales',
   //   postcode: '',
   //   description: ''
   // }
@@ -45,7 +45,7 @@ export default () => {
     fax: '',
     title: '',
     email: 'samle@gmail.com',
-    emailOptOutCheckbox: '',
+    emailOptOutCheckbox: false,
     street: '1 Elizabeth',
     city: 'Sydney',
     state: 'New South Wales',
@@ -66,6 +66,13 @@ export default () => {
     });
   }
 
+  const updateOptOut = event => {
+    setState({
+      ...formInfo,
+      emailOptOutCheckbox: event.target.checked
+    });
+  }
+
   // perform code when form is submitted by user
   const submitForm = event => {
     const form = event.currentTarget;
@@ -73,7 +80,12 @@ export default () => {
       event.preventDefault();
       event.stopPropagation();
     }
-    if (form.checkValidity() === true) {
+    if (
+      form.checkValidity() === true &&
+      phoneValid &&
+      emailValid &&
+      postcodeValid
+    ) {
       event.preventDefault();
       setModalShow(true);
     }
@@ -95,6 +107,8 @@ export default () => {
 
   const [emailValid, setEmailValid] = useState(true);
   const emailValidErrorMessage = 'Email not valid.'
+
+
 
   const validatePhone = event => {
     setPhoneValid(false);
@@ -280,8 +294,7 @@ export default () => {
                         inline
                         className="form-margin-left"
                         type="checkbox"
-                        value={formInfo.emailOptOutCheckbox}
-                        onChange={updateField}
+                        onChange={updateOptOut}
                       />
                     </Form.Group>
                   </Form.Row>
