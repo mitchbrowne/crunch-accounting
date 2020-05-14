@@ -89,7 +89,13 @@ Contact Form Styling
 }
 
 .contact-content-wrapper {
-  max-width: 100vw;
+  max-width: 800px;
+}
+
+@media only screen and (max-width: 800px) {
+  .contact-content-wrapper {
+    max-width: 100vw;
+  }
 }
 
 /* =============
