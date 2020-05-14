@@ -5,6 +5,10 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+/* ============
+UI Styling
+============ */
+
 .header-wrapper {
   display: flex;
   flex-direction: column;
@@ -15,6 +19,34 @@
 .content-wrapper {
   background-color: #F8F8F8;
 }
+
+.footer-wrapper {
+  padding: 0 5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+footer p {
+  color: #BFBFC6;
+  font-size: 12px;
+}
+
+.footer-link {
+  text-decoration: none;
+  color: #BFBFC6;
+  margin: 0 1em;
+  font-size: 12px;
+}
+
+.footer-link:hover {
+  text-decoration: none;
+  color: #AAAAAA;
+}
+
+/* ============
+Contact Form Styling
+============ */
 
 .contact-header {
   box-sizing: border-box;
@@ -52,6 +84,10 @@
   max-width: 50vw;
 }
 
+/* =============
+Form Styling
+============= */
+
 .form-wrapper {
   margin: 3em 2em;
 }
@@ -66,29 +102,10 @@
   margin-left: 1em;
 }
 
-.footer-wrapper {
-  padding: 0 5rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
+/* =============
+Modal Styling
+============= */
 
-footer p {
-  color: #BFBFC6;
-  font-size: 12px;
-}
-
-.footer-link {
-  text-decoration: none;
-  color: #BFBFC6;
-  margin: 0 1em;
-  font-size: 12px;
-}
-
-.footer-link:hover {
-  text-decoration: none;
-  color: #AAAAAA;
-}
 
 .modal-wrapper {
   padding: 2em;
@@ -97,7 +114,7 @@ footer p {
   justify-content: space-around;
 }
 
-.close-wrapper {
+.modal-close-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;

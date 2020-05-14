@@ -6,13 +6,16 @@ import {
 } from 'react-bootstrap';
 
 export default (props) => {
+  // destructure props
+  const { labelOne, valueOne } = props;
+
   return (
     <Row>
       <Col xs={12} md={3}>
-        <p className="modal-form-label">{props.labelOne}</p>
+        <p className="modal-form-label">{labelOne}</p>
       </Col>
       <Col>
-        <p>{props.valueOne}</p>
+        <p>{valueOne}</p>
       </Col>
     </Row>
   )
