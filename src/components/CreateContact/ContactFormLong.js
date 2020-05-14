@@ -7,10 +7,12 @@ import { postcodeValidator } from 'postcode-validator';
 import ConfirmationModal from './ConfirmationModal';
 
 import {
+  Container,
   Button,
   Row,
   Col,
-  Form
+  Form,
+  InputGroup
 } from 'react-bootstrap';
 
 export default () => {
@@ -149,138 +151,145 @@ export default () => {
       <div className="contact-content">
         <div className="form-wrapper">
           <Form noValidate validated={validated} onSubmit={submitForm} id="mainForm">
-          <Row>
-            <Col>
-              <h3 className="form-title">Contact Information</h3>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-                <Form.Row>
-                    <Form.Group as={Col} controlId="titlePrefix">
-                      <Form.Label>Title Prefix</Form.Label>
-                      <Form.Control
-                        as="select"
-                        value={formInfo.titlePrefix}
-                        onChange={updateField}
-                        >
-                        <option>None</option>
-                        <option>Mr</option>
-                        <option>Mrs</option>
-                        <option>Miss</option>
-                        <option>Ms</option>
-                      </Form.Control>
-                    </Form.Group>
-                    <Form.Group as={Col} controlId="firstName">
-                      <Form.Label>First Name</Form.Label>
+            <Container className="form-wrapper">
+              <Row>
+                <Col>
+                  <h3 className="form-title">Contact Information</h3>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <Form.Row>
+                      <Form.Group as={Col} lg="2" controlId="titlePrefix">
+                        <Form.Label>First Name</Form.Label>
+                        <Form.Control
+                          as="select"
+                          value={formInfo.titlePrefix}
+                          onChange={updateField}
+                          >
+                          <option>None</option>
+                          <option>Mr</option>
+                          <option>Mrs</option>
+                          <option>Miss</option>
+                          <option>Ms</option>
+                        </Form.Control>
+                      </Form.Group>
+                      <Form.Group as={Col} lg="4" controlId="firstName">
+                        <Form.Label>&nbsp;</Form.Label>
+                        <Form.Control
+                          required
+                          type="text"
+                          placeholder="John"
+                          value={formInfo.firstName}
+                          onChange={updateField}
+                        />
+                      </Form.Group>
+                      <Form.Group as={Col} controlId="lastName">
+                        <Form.Label>Last Name</Form.Label>
+                        <Form.Control
+                          required
+                          type="text"
+                          placeholder="Smith"
+                          value={formInfo.lastName}
+                          onChange={updateField}
+                        />
+                      </Form.Group>
+                  </Form.Row>
+
+                  <Form.Row>
+                    <Form.Group as={Col} controlId="accountName">
+                      <Form.Label>Account Name</Form.Label>
                       <Form.Control
                         required
                         type="text"
-                        placeholder="John"
-                        value={formInfo.firstName}
+                        placeholder="John's Joinery"
+                        value={formInfo.accountName}
                         onChange={updateField}
                       />
                     </Form.Group>
-                    <Form.Group as={Col} controlId="lastName">
-                      <Form.Label>Last Name</Form.Label>
+
+                    <Form.Group as={Col} controlId="companyName">
+                      <Form.Label>Company Name (optional)</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder=""
+                        value={formInfo.companyName}
+                        onChange={updateField}
+                      />
+                    </Form.Group>
+                  </Form.Row>
+
+                  <Form.Row>
+                    <Form.Group as={Col} controlId="phone">
+                      <Form.Label>Phone</Form.Label>
                       <Form.Control
                         required
+                        type="phone"
+                        placeholder="02 123 456 78"
+                        value={formInfo.phone}
+                        onChange={validatePhone}
+                        isInvalid={!phoneValid}
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        {phoneValidErrorMessage}
+                      </Form.Control.Feedback>
+                    </Form.Group>
+
+                    <Form.Group as={Col} controlId="fax">
+                      <Form.Label>Fax (optional)</Form.Label>
+                      <Form.Control
                         type="text"
-                        placeholder="Smith"
-                        value={formInfo.lastName}
+                        placeholder="John's Joinery"
+                        value={formInfo.fax}
                         onChange={updateField}
                       />
                     </Form.Group>
-                </Form.Row>
+                  </Form.Row>
 
-                <Form.Row>
-                  <Form.Group as={Col} controlId="accountName">
-                    <Form.Label>Account Name</Form.Label>
-                    <Form.Control
-                      required
-                      type="text"
-                      placeholder="John's Joinery"
-                      value={formInfo.accountName}
-                      onChange={updateField}
-                    />
-                  </Form.Group>
+                  <Form.Row>
+                    <Form.Group as={Col} controlId="title">
+                      <Form.Label>Title (optional)</Form.Label>
+                      <Form.Control
+                        type="text"
+                        placeholder="Owner"
+                        value={formInfo.title}
+                        onChange={updateField}
+                      />
+                    </Form.Group>
 
-                  <Form.Group as={Col} controlId="companyName">
-                    <Form.Label>Company Name (optional)</Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder=""
-                      value={formInfo.companyName}
-                      onChange={updateField}
-                    />
-                  </Form.Group>
-                </Form.Row>
+                    <Form.Group as={Col} controlId="email">
+                      <Form.Label>Email</Form.Label>
+                      <Form.Control
+                        required
+                        type="email"
+                        placeholder="samle@gmail.com"
+                        value={formInfo.email}
+                        onChange={validateEmail}
+                        isInvalid={!emailValid}
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        {emailValidErrorMessage}
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                  </Form.Row>
 
-                <Form.Row>
-                  <Form.Group as={Col} controlId="phone">
-                    <Form.Label>Phone</Form.Label>
-                    <Form.Control
-                      required
-                      type="phone"
-                      placeholder="02 123 456 78"
-                      value={formInfo.phone}
-                      onChange={validatePhone}
-                      isInvalid={!phoneValid}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      {phoneValidErrorMessage}
-                    </Form.Control.Feedback>
-                  </Form.Group>
+                  <Form.Row>
+                    <Form.Group id="emailOptOutCheckbox">
+                      <Form.Label >Email Opt Out</Form.Label>
+                      <Form.Check
+                        inline
+                        className="form-margin-left"
+                        type="checkbox"
+                        value={formInfo.emailOptOutCheckbox}
+                        onChange={updateField}
+                      />
+                    </Form.Group>
+                  </Form.Row>
+              </Col>
+            </Row>
+          </Container>
 
-                  <Form.Group as={Col} controlId="fax">
-                    <Form.Label>Fax (optional)</Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="John's Joinery"
-                      value={formInfo.fax}
-                      onChange={updateField}
-                    />
-                  </Form.Group>
-                </Form.Row>
-
-                <Form.Row>
-                  <Form.Group as={Col} controlId="title">
-                    <Form.Label>Title (optional)</Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Owner"
-                      value={formInfo.title}
-                      onChange={updateField}
-                    />
-                  </Form.Group>
-
-                  <Form.Group as={Col} controlId="email">
-                    <Form.Label>Email</Form.Label>
-                    <Form.Control
-                      required
-                      type="email"
-                      placeholder="samle@gmail.com"
-                      value={formInfo.email}
-                      onChange={validateEmail}
-                      isInvalid={!emailValid}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      {emailValidErrorMessage}
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Form.Row>
-
-                <Form.Group id="emailOptOutCheckbox">
-                  <Form.Check
-                    type="checkbox"
-                    label="Email Opt Out"
-                    value={formInfo.emailOptOutCheckbox}
-                    onChange={updateField}
-                  />
-                </Form.Group>
-            </Col>
-          </Row>
-
+        <Container className="form-wrapper">
           <Row>
             <Col>
               <h3 className="form-title">Address Information</h3>
@@ -344,9 +353,11 @@ export default () => {
                     </Form.Control.Feedback>
                   </Form.Group>
                 </Form.Row>
-            </Col>
-          </Row>
+              </Col>
+            </Row>
+        </Container>
 
+        <Container className="form-wrapper">
           <Row>
             <Col>
               <h3 className="form-title">Description Information</h3>
@@ -365,6 +376,7 @@ export default () => {
               </Form.Group>
             </Col>
           </Row>
+        </Container>
           </Form>
         </div>
       </div>

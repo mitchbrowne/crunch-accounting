@@ -53,13 +53,17 @@
 }
 
 .form-wrapper {
-  margin: 2em 2em;
+  margin: 3em 2em;
 }
 
 .form-title {
   font-size: 1.3em;
   color: #FF6C00;
   margin-bottom: 1em;
+}
+
+.form-margin-left {
+  margin-left: 1em;
 }
 
 .footer-wrapper {
@@ -99,12 +103,8 @@ footer p {
   justify-content: flex-end;
 }
 
-.modal-close::before {
-  color: #000;
-  font-weight: 800;
-  background: none;
-  border: none;
-  text-decoration: none;
+.modal-close {
+  cursor: pointer;
 }
 
 .modal-text {
