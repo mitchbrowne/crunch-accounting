@@ -4,6 +4,7 @@ import { parsePhoneNumberFromString } from 'libphonenumber-js';
 import Validator from 'email-validator';
 import { postcodeValidator } from 'postcode-validator';
 
+import ConfirmationModal from './ConfirmationModal';
 
 import {
   Button,
@@ -12,29 +13,42 @@ import {
   Form
 } from 'react-bootstrap';
 
-// import form components
-import ContactInfo from './ContactInfo';
-import AddressInfo from './AddressInfo';
-import DescriptionInfo from './DescriptionInfo';
-
 export default () => {
   // hold initial field states within object
+  // const initialFormInfoState = {
+  //   titlePrefix: '',
+  //   firstName: '',
+  //   lastName: '',
+  //   accountName: '',
+  //   companyName: '',
+  //   phone: '',
+  //   fax: '',
+  //   title: '',
+  //   email: '',
+  //   emailOptOutCheckbox: '',
+  //   street: '',
+  //   city: '',
+  //   state: '',
+  //   postcode: '',
+  //   description: ''
+  // }
+
   const initialFormInfoState = {
     titlePrefix: '',
-    firstName: '',
-    lastName: '',
-    accountName: '',
+    firstName: 'John',
+    lastName: 'Smith',
+    accountName: 'Johns Joinery',
     companyName: '',
-    phone: '',
+    phone: '02 123 456 78',
     fax: '',
     title: '',
-    email: '',
+    email: 'samle@gmail.com',
     emailOptOutCheckbox: '',
-    street: '',
-    city: '',
-    state: '',
-    postcode: '',
-    description: ''
+    street: '1 Elizabeth',
+    city: 'Sydney',
+    state: 'New South Wales',
+    postcode: '2000',
+    description: 'Please follow up with email after calls with this client.'
   }
 
   // set state of each form field using state object to hold fields
@@ -56,14 +70,11 @@ export default () => {
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
-      console.log('hey');
     }
     if (form.checkValidity() === true) {
-      console.log('ITS TRUE');
       event.preventDefault();
-      console.log(formInfo);
+      setModalShow(true);
     }
-    console.log('you');
     setValidated(true);
   }
 
@@ -113,8 +124,16 @@ export default () => {
     updateField(event);
   }
 
+  const [modalShow, setModalShow] = useState(false);
+
   return (
     <div>
+      <ConfirmationModal
+        show={modalShow}
+        formInfo={formInfo}
+        onHide={() => setModalShow(false)}
+      />
+
       <div className="contact-header">
         <h1 className="contact-title">Create Contact</h1>
         <div id="controls">

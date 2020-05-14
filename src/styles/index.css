@@ -85,3 +85,37 @@ footer p {
   text-decoration: none;
   color: #AAAAAA;
 }
+
+.modal-wrapper {
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.close-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.modal-close::before {
+  color: #000;
+  font-weight: 800;
+  background: none;
+  border: none;
+  text-decoration: none;
+}
+
+.modal-text {
+  color: #888888;
+}
+
+.modal-form-label {
+  text-align: right;
+  color: #888888;
+}
+
+.modal-form-wrapper {
+  margin-bottom: 2em;
+}
