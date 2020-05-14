@@ -52,6 +52,14 @@ footer p {
   color: #AAAAAA;
 }
 
+.redirect-wrapper {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 /* ============
 Contact Form Styling
 ============ */
@@ -146,13 +154,6 @@ Modal Styling
   text-align: right;
   color: #888888;
 }
-
-/* @media only screen and (max-width: 600px) {
-  .modal-form-label {
-    text-align: right;
-    color: #888888;
-  }
-} */
 
 .modal-form-wrapper {
   margin-bottom: 2em;
