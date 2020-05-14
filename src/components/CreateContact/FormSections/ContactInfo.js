@@ -31,7 +31,7 @@ export default (props) => {
       <Row>
         <Col>
           <Form.Row>
-              <Form.Group as={Col} lg="2" controlId="titlePrefix">
+              <Form.Group as={Col} xs="4" lg="2" controlId="titlePrefix">
                 <Form.Label>First Name</Form.Label>
                 <Form.Control
                   as="select"
@@ -45,7 +45,7 @@ export default (props) => {
                   <option>Ms</option>
                 </Form.Control>
               </Form.Group>
-              <Form.Group as={Col} lg="4" controlId="firstName">
+              <Form.Group as={Col} xs="8" lg="4" controlId="firstName">
                 <Form.Label>&nbsp;</Form.Label>
                 <Form.Control
                   required
@@ -68,7 +68,7 @@ export default (props) => {
           </Form.Row>
 
           <Form.Row>
-            <Form.Group as={Col} controlId="accountName">
+            <Form.Group as={Col} xs="12" lg="6" controlId="accountName">
               <Form.Label>Account Name</Form.Label>
               <Form.Control
                 required
@@ -91,7 +91,7 @@ export default (props) => {
           </Form.Row>
 
           <Form.Row>
-            <Form.Group as={Col} controlId="phone">
+            <Form.Group as={Col} xs="12" lg="6" controlId="phone">
               <Form.Label>Phone</Form.Label>
               <Form.Control
                 required
@@ -118,7 +118,7 @@ export default (props) => {
           </Form.Row>
 
           <Form.Row>
-            <Form.Group as={Col} controlId="title">
+            <Form.Group as={Col} xs="12" lg="6" controlId="title">
               <Form.Label>Title (optional)</Form.Label>
               <Form.Control
                 type="text"

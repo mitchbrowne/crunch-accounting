@@ -27,7 +27,7 @@ export default (props) => {
       <Row>
         <Col>
             <Form.Row>
-              <Form.Group as={Col} controlId="street">
+              <Form.Group as={Col} xs="12" lg="6" controlId="street">
                 <Form.Label>Street No. & Street</Form.Label>
                 <Form.Control
                   required
@@ -51,7 +51,7 @@ export default (props) => {
             </Form.Row>
 
             <Form.Row>
-              <Form.Group as={Col} controlId="state">
+              <Form.Group as={Col} xs="12" lg="6" controlId="state">
                 <Form.Label>State</Form.Label>
                 <Form.Control
                   as="select"

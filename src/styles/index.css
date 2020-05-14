@@ -27,6 +27,14 @@ UI Styling
   justify-content: space-between;
 }
 
+@media only screen and (max-width: 700px) {
+  .footer-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
 footer p {
   color: #BFBFC6;
   font-size: 12px;
@@ -42,6 +50,14 @@ footer p {
 .footer-link:hover {
   text-decoration: none;
   color: #AAAAAA;
+}
+
+.redirect-wrapper {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 /* ============
@@ -80,8 +96,14 @@ Contact Form Styling
   color: #fff;
 }
 
-.contact-content {
-  max-width: 50vw;
+.contact-content-wrapper {
+  max-width: 800px;
+}
+
+@media only screen and (max-width: 800px) {
+  .contact-content-wrapper {
+    max-width: 100vw;
+  }
 }
 
 /* =============
