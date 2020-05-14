@@ -52,14 +52,6 @@ footer p {
   color: #AAAAAA;
 }
 
-.redirect-wrapper {
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 /* ============
 Contact Form Styling
 ============ */
