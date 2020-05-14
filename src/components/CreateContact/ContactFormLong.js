@@ -18,40 +18,22 @@ import {
 
 export default () => {
   // hold initial field states within object
-  // const initialFormInfoState = {
-  //   titlePrefix: '',
-  //   firstName: '',
-  //   lastName: '',
-  //   accountName: '',
-  //   companyName: '',
-  //   phone: '',
-  //   fax: '',
-  //   title: '',
-  //   email: '',
-  //   emailOptOutCheckbox: false,
-  //   street: '',
-  //   city: '',
-  //   state: 'New South Wales',
-  //   postcode: '',
-  //   description: ''
-  // }
-
   const initialFormInfoState = {
     titlePrefix: '',
-    firstName: 'John',
-    lastName: 'Smith',
-    accountName: 'Johns Joinery',
+    firstName: '',
+    lastName: '',
+    accountName: '',
     companyName: '',
-    phone: '02 123 456 78',
+    phone: '',
     fax: '',
     title: '',
-    email: 'samle@gmail.com',
+    email: '',
     emailOptOutCheckbox: false,
-    street: '1 Elizabeth',
-    city: 'Sydney',
+    street: '',
+    city: '',
     state: 'New South Wales',
-    postcode: '2000',
-    description: 'Please follow up with email after calls with this client.'
+    postcode: '',
+    description: ''
   }
 
   // set state of each form field using state object to hold fields
