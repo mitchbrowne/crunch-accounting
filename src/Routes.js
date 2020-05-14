@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 // import components
+import Redirect from './components/Redirect';
 import Layout from './components/UI/Layout';
 import CreateContact from './views/CreateContact';
-import Redirect from './views/Redirect';
 
 
 class Routes extends Component {
@@ -12,8 +12,8 @@ class Routes extends Component {
     return (
       <Router>
         <Layout>
-          <Route path="/" component={Redirect} />
           <Route exact path="/create-contact" component={CreateContact} />
+          <Route path="/" component={Redirect} />
         </Layout>
       </Router>
     );
