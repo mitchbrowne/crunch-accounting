@@ -11,10 +11,10 @@ export default (props) => {
 
   return (
     <Row>
-      <Col xs={12} md={3}>
+      <Col xs={3} md={3}>
         <p className="modal-form-label">{labelOne}</p>
       </Col>
-      <Col>
+      <Col xs={12} md={9}>
         <p>{valueOne}</p>
       </Col>
     </Row>

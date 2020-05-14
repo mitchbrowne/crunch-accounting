@@ -27,6 +27,14 @@ UI Styling
   justify-content: space-between;
 }
 
+@media only screen and (max-width: 700px) {
+  .footer-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
 footer p {
   color: #BFBFC6;
   font-size: 12px;
@@ -80,8 +88,8 @@ Contact Form Styling
   color: #fff;
 }
 
-.contact-content {
-  max-width: 50vw;
+.contact-content-wrapper {
+  max-width: 100vw;
 }
 
 /* =============
@@ -132,6 +140,13 @@ Modal Styling
   text-align: right;
   color: #888888;
 }
+
+/* @media only screen and (max-width: 600px) {
+  .modal-form-label {
+    text-align: right;
+    color: #888888;
+  }
+} */
 
 .modal-form-wrapper {
   margin-bottom: 2em;

@@ -11,7 +11,7 @@ export default (props) => {
 
   return (
     <Row>
-      <Col>
+      <Col xs="12" lg="6">
         <Row>
           <Col>
             <p className="modal-form-label">{labelOne}</p>

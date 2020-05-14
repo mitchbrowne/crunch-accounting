@@ -161,7 +161,7 @@ export default () => {
         </div>
       </div>
 
-      <div className="contact-content">
+      <div className="contact-content-wrapper">
         <div className="form-wrapper">
           <Form noValidate validated={validated} onSubmit={submitForm} id="mainForm">
             <ContactInfo
