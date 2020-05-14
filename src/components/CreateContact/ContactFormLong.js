@@ -4,7 +4,10 @@ import { parsePhoneNumberFromString } from 'libphonenumber-js';
 import Validator from 'email-validator';
 import { postcodeValidator } from 'postcode-validator';
 
-import ConfirmationModal from './ConfirmationModal';
+import ContactInfo from './ContactInfo';
+import AddressInfo from './AddressInfo';
+import DescriptionInfo from './DescriptionInfo';
+import ConfirmationModal from './Modal/ConfirmationModal';
 
 import {
   Container,
@@ -66,6 +69,7 @@ export default () => {
     });
   }
 
+  // updates email opt out state upon checkbox click
   const updateOptOut = event => {
     setState({
       ...formInfo,
@@ -73,7 +77,7 @@ export default () => {
     });
   }
 
-  // perform code when form is submitted by user
+  // submit form when form is submitted by user
   const submitForm = event => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
@@ -165,231 +169,25 @@ export default () => {
       <div className="contact-content">
         <div className="form-wrapper">
           <Form noValidate validated={validated} onSubmit={submitForm} id="mainForm">
-            <Container className="form-wrapper">
-              <Row>
-                <Col>
-                  <h3 className="form-title">Contact Information</h3>
-                </Col>
-              </Row>
-              <Row>
-                <Col>
-                  <Form.Row>
-                      <Form.Group as={Col} lg="2" controlId="titlePrefix">
-                        <Form.Label>First Name</Form.Label>
-                        <Form.Control
-                          as="select"
-                          value={formInfo.titlePrefix}
-                          onChange={updateField}
-                          >
-                          <option>None</option>
-                          <option>Mr</option>
-                          <option>Mrs</option>
-                          <option>Miss</option>
-                          <option>Ms</option>
-                        </Form.Control>
-                      </Form.Group>
-                      <Form.Group as={Col} lg="4" controlId="firstName">
-                        <Form.Label>&nbsp;</Form.Label>
-                        <Form.Control
-                          required
-                          type="text"
-                          placeholder="John"
-                          value={formInfo.firstName}
-                          onChange={updateField}
-                        />
-                      </Form.Group>
-                      <Form.Group as={Col} controlId="lastName">
-                        <Form.Label>Last Name</Form.Label>
-                        <Form.Control
-                          required
-                          type="text"
-                          placeholder="Smith"
-                          value={formInfo.lastName}
-                          onChange={updateField}
-                        />
-                      </Form.Group>
-                  </Form.Row>
-
-                  <Form.Row>
-                    <Form.Group as={Col} controlId="accountName">
-                      <Form.Label>Account Name</Form.Label>
-                      <Form.Control
-                        required
-                        type="text"
-                        placeholder="John's Joinery"
-                        value={formInfo.accountName}
-                        onChange={updateField}
-                      />
-                    </Form.Group>
-
-                    <Form.Group as={Col} controlId="companyName">
-                      <Form.Label>Company Name (optional)</Form.Label>
-                      <Form.Control
-                        type="text"
-                        placeholder=""
-                        value={formInfo.companyName}
-                        onChange={updateField}
-                      />
-                    </Form.Group>
-                  </Form.Row>
-
-                  <Form.Row>
-                    <Form.Group as={Col} controlId="phone">
-                      <Form.Label>Phone</Form.Label>
-                      <Form.Control
-                        required
-                        type="phone"
-                        placeholder="02 123 456 78"
-                        value={formInfo.phone}
-                        onChange={validatePhone}
-                        isInvalid={!phoneValid}
-                      />
-                      <Form.Control.Feedback type="invalid">
-                        {phoneValidErrorMessage}
-                      </Form.Control.Feedback>
-                    </Form.Group>
-
-                    <Form.Group as={Col} controlId="fax">
-                      <Form.Label>Fax (optional)</Form.Label>
-                      <Form.Control
-                        type="text"
-                        placeholder="John's Joinery"
-                        value={formInfo.fax}
-                        onChange={updateField}
-                      />
-                    </Form.Group>
-                  </Form.Row>
-
-                  <Form.Row>
-                    <Form.Group as={Col} controlId="title">
-                      <Form.Label>Title (optional)</Form.Label>
-                      <Form.Control
-                        type="text"
-                        placeholder="Owner"
-                        value={formInfo.title}
-                        onChange={updateField}
-                      />
-                    </Form.Group>
-
-                    <Form.Group as={Col} controlId="email">
-                      <Form.Label>Email</Form.Label>
-                      <Form.Control
-                        required
-                        type="email"
-                        placeholder="samle@gmail.com"
-                        value={formInfo.email}
-                        onChange={validateEmail}
-                        isInvalid={!emailValid}
-                      />
-                      <Form.Control.Feedback type="invalid">
-                        {emailValidErrorMessage}
-                      </Form.Control.Feedback>
-                    </Form.Group>
-                  </Form.Row>
-
-                  <Form.Row>
-                    <Form.Group id="emailOptOutCheckbox">
-                      <Form.Label >Email Opt Out</Form.Label>
-                      <Form.Check
-                        inline
-                        className="form-margin-left"
-                        type="checkbox"
-                        onChange={updateOptOut}
-                      />
-                    </Form.Group>
-                  </Form.Row>
-              </Col>
-            </Row>
-          </Container>
-
-        <Container className="form-wrapper">
-          <Row>
-            <Col>
-              <h3 className="form-title">Address Information</h3>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-                <Form.Row>
-                  <Form.Group as={Col} controlId="street">
-                    <Form.Label>Street No. & Street</Form.Label>
-                    <Form.Control
-                      required
-                      type="text"
-                      placeholder="1 Elizabeth Street"
-                      value={formInfo.street}
-                      onChange={updateField}
-                    />
-                  </Form.Group>
-
-                  <Form.Group as={Col} controlId="city">
-                    <Form.Label>City</Form.Label>
-                    <Form.Control
-                      required
-                      type="text"
-                      placeholder="Sydney"
-                      value={formInfo.city}
-                      onChange={updateField}
-                    />
-                  </Form.Group>
-                </Form.Row>
-
-                <Form.Row>
-                  <Form.Group as={Col} controlId="state">
-                    <Form.Label>State</Form.Label>
-                    <Form.Control
-                      as="select"
-                      value={formInfo.state}
-                      onChange={updateField}
-                    >
-                      <option>New South Wales</option>
-                      <option>Victoria</option>
-                      <option>Queensland</option>
-                      <option>Western Australia</option>
-                      <option>South Australia</option>
-                      <option>Tasmania</option>
-                    </Form.Control>
-                  </Form.Group>
-
-                  <Form.Group as={Col} controlId="postcode">
-                    <Form.Label>Postcode</Form.Label>
-                    <Form.Control
-                      required
-                      type="postcode"
-                      placeholder="2000"
-                      value={formInfo.postcode}
-                      onChange={validatePostcode}
-                      isInvalid={!postcodeValid}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      {postcodeValidErrorMessage}
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Form.Row>
-              </Col>
-            </Row>
-        </Container>
-
-        <Container className="form-wrapper">
-          <Row>
-            <Col>
-              <h3 className="form-title">Description Information</h3>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Form.Group controlId="description">
-                <Form.Label>Description</Form.Label>
-                <Form.Control
-                  required
-                  type="text"
-                  value={formInfo.description}
-                  onChange={updateField}
-                />
-              </Form.Group>
-            </Col>
-          </Row>
-        </Container>
+            <ContactInfo
+              formInfo={formInfo}
+              updateField={updateField}
+              updateOptOut={updateOptOut}
+              validatePhone={validatePhone}
+              phoneValid={phoneValid}
+              validateEmail={validateEmail}
+              emailValid={emailValid}
+            />
+            <AddressInfo
+              formInfo={formInfo}
+              updateField={updateField}
+              validatePostcode={validatePostcode}
+              postcodeValid={postcodeValid}
+            />
+            <DescriptionInfo
+              formInfo={formInfo}
+              updateField={updateField}
+            />
           </Form>
         </div>
       </div>

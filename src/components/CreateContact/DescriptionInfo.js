@@ -8,8 +8,10 @@ import {
 } from 'react-bootstrap';
 
 export default (props) => {
+  const {updateField, formInfo} = props;
+
   return (
-    <div className="form-wrapper">
+    <Container className="form-wrapper">
       <Row>
         <Col>
           <h3 className="form-title">Description Information</h3>
@@ -22,12 +24,12 @@ export default (props) => {
             <Form.Control
               required
               type="text"
-              value={props.formInfo.description}
-              onChange={props.updateField}
+              value={formInfo.description}
+              onChange={updateField}
             />
           </Form.Group>
         </Col>
       </Row>
-    </div>
+    </Container>
   )
 }

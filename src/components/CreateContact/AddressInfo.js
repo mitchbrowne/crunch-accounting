@@ -10,22 +10,10 @@ import {
 } from 'react-bootstrap';
 
 export default (props) => {
-  const updateField = props.updateField;
-  const formInfo = props.formInfo;
-
-  const [postcodeValid, setPostcodeValid] = useState(true);
-  const postcodeValidErrorMessage = 'Postcode not valid.'
-
-  const validatePostcode = event => {
-    setPostcodeValid(false);
-    if (postcodeValidator(event.target.value, 'AU')) {
-      setPostcodeValid(true);
-    }
-    updateField(event);
-  }
+  const {updateField, formInfo, validatePostcode, postcodeValid} = props;
 
   return (
-    <div className="form-wrapper">
+    <Container className="form-wrapper">
       <Row>
         <Col>
           <h3 className="form-title">Address Information</h3>
@@ -33,7 +21,6 @@ export default (props) => {
       </Row>
       <Row>
         <Col>
-          <Form>
             <Form.Row>
               <Form.Group as={Col} controlId="street">
                 <Form.Label>Street No. & Street</Form.Label>
@@ -86,13 +73,12 @@ export default (props) => {
                   isInvalid={!postcodeValid}
                 />
                 <Form.Control.Feedback type="invalid">
-                  {postcodeValidErrorMessage}
+                  {'Postcode is invalid'}
                 </Form.Control.Feedback>
               </Form.Group>
             </Form.Row>
-          </Form>
-        </Col>
-      </Row>
-    </div>
+          </Col>
+        </Row>
+    </Container>
   )
 }

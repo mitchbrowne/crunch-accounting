@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { closeX, tick } from '../../assets/Icons';
+import { closeX, tick } from '../../../assets/Icons';
 
 import ModalRow from './ModalRow';
 import ModalRowSingleColumn from './ModalRowSingleColumn';
