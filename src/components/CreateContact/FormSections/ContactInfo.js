@@ -54,6 +54,9 @@ export default (props) => {
                   value={formInfo.firstName}
                   onChange={updateField}
                 />
+                <Form.Control.Feedback type="invalid">
+                  {'First name is required'}
+                </Form.Control.Feedback>
               </Form.Group>
               <Form.Group as={Col} controlId="lastName">
                 <Form.Label>Last Name</Form.Label>
@@ -64,6 +67,9 @@ export default (props) => {
                   value={formInfo.lastName}
                   onChange={updateField}
                 />
+                <Form.Control.Feedback type="invalid">
+                  {'Last name is required'}
+                </Form.Control.Feedback>
               </Form.Group>
           </Form.Row>
 
@@ -77,6 +83,9 @@ export default (props) => {
                 value={formInfo.accountName}
                 onChange={updateField}
               />
+              <Form.Control.Feedback type="invalid">
+                {'Account name is required'}
+              </Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group as={Col} controlId="companyName">

@@ -36,6 +36,9 @@ export default (props) => {
                   value={formInfo.street}
                   onChange={updateField}
                 />
+                <Form.Control.Feedback type="invalid">
+                  {'Street No. & Street are required'}
+                </Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group as={Col} controlId="city">
@@ -47,6 +50,9 @@ export default (props) => {
                   value={formInfo.city}
                   onChange={updateField}
                 />
+                <Form.Control.Feedback type="invalid">
+                  {'City is required'}
+                </Form.Control.Feedback>
               </Form.Group>
             </Form.Row>
 
