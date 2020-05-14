@@ -19,7 +19,7 @@ export default (props) => {
           <h3 className="form-title">Description Information</h3>
         </Col>
       </Row>
-      
+
       <Row>
         <Col>
           <Form.Group controlId="description">
@@ -30,6 +30,9 @@ export default (props) => {
               value={formInfo.description}
               onChange={updateField}
             />
+            <Form.Control.Feedback type="invalid">
+              {'Description is required'}
+            </Form.Control.Feedback>
           </Form.Group>
         </Col>
       </Row>

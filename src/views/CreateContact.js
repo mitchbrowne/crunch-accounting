@@ -1,11 +1,11 @@
 import React from 'react';
 
-import ContactFormLong from '../components/CreateContact/ContactFormLong';
+import ContactForm from '../components/CreateContact/ContactForm';
 
 export default () => {
   return (
     <div>
-      <ContactFormLong />
+      <ContactForm />
     </div>
   )
 }
